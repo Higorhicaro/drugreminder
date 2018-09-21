@@ -10,15 +10,43 @@ public class DrugReminderImpl implements IReminder {
 	public List<String> createReminders(String startTime, Frequency frequency,
 			Integer duration) {
 		
-		List<String> lista = new ArrayList<String>();
+		if(duration < 1 || duration >30) {
+			throw new java.lang.IllegalArgumentException("duration invalido");
+		}
 		
-		lista.add(startTime);
+		if(Character.toString(startTime.charAt(2)) != "/" || Character.toString(startTime.charAt(5)) != "/" || Character.toString(startTime.charAt(8)) != " " || Character.toString(startTime.charAt(11)) != ":") {
+			throw new java.lang.IllegalArgumentException("formato da data invalido");
+		} else if(startTime.length() != 14) {
+			throw new java.lang.IllegalArgumentException("formato da data invalido");
+		}
 		
 		dia = Integer.parseInt(startTime.substring(0,1));
 		mes = Integer.parseInt(startTime.substring(3,4));
 		ano = Integer.parseInt(startTime.substring(6,7));
 		hora = Integer.parseInt(startTime.substring(9,10));
-		min = Integer.parseInt(startTime.substring(11,12));
+		min = Integer.parseInt(startTime.substring(12,13));
+		
+		if(ano < 18) {
+			throw new java.lang.IllegalArgumentException("data invalida");
+		} else if(mes < 1 || mes > 12) {
+			throw new java.lang.IllegalArgumentException("data invalida");
+		} else if(dia < 1 || dia > 31) {
+			throw new java.lang.IllegalArgumentException("data invalida");
+		} else if(dia == 31) {
+			if(mes == 4 || mes == 6 || mes == 9 || mes == 11) {
+				throw new java.lang.IllegalArgumentException("data invalida");
+			}
+		} else if(mes == 2) {
+			if(dia == 29 && ano%4 != 0) {
+				throw new java.lang.IllegalArgumentException("data invalida");
+			} else if(dia > 29) {
+				throw new java.lang.IllegalArgumentException("data invalida");
+			}
+		}
+		
+		List<String> lista = new ArrayList<String>();
+		
+		lista.add(startTime);
 		
 		int cont = 0;		
 		
