@@ -43,6 +43,10 @@ public class DrugReminderImpl implements IReminder {
 			} else if(dia > 29) {
 				throw new java.lang.IllegalArgumentException("data invalida");
 			}
+		} else if(hora < 0 || hora > 23) {
+			throw new java.lang.IllegalArgumentException("hora invalida");
+		} else if(min < 0 || min > 59) {
+			throw new java.lang.IllegalArgumentException("hora invalida");
 		}
 		
 		List<String> lista = new ArrayList<String>();
