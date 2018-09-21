@@ -28,6 +28,8 @@ public class DrugReminderImplParameterizedTest {
 								 { "28/02/20 12:30", Frequency.EIGHT_HOURS, 2, Arrays.asList("28/02/20 12:30", "28/02/20 20:30", "29/02/20 04:30", "29/02/20 12:30", "29/02/20 20:30", "01/03/20 04:30") },
 								 { "10/09/18 12:30", Frequency.TWENTYFOUR_HOURS, 1, Arrays.asList("10/09/18 12:30") },
 								 { "30/10/18 12:30", Frequency.TWENTYFOUR_HOURS, 3, Arrays.asList("30/10/18 12:30", "31/10/18 12:30", "01/11/18 12:30") },
+								 { "27/10/18 12:30", Frequency.TWENTYFOUR_HOURS, 4, Arrays.asList("27/10/18 12:30", "28/10/18 12:30", "29/10/18 12:30", "30/10/18 12:30") },
+								 { "27/02/20 12:30", Frequency.TWENTYFOUR_HOURS, 4, Arrays.asList("27/02/20 12:30", "28/02/20 12:30", "29/02/20 12:30", "01/03/20 12:30") },
 								 { "10/09/18 12:30", Frequency.TWENTYFOUR_HOURS, 2, Arrays.asList("10/09/18 12:30", "11/09/18 12:30") },
 								 { "31/12/18 12:30", Frequency.EIGHT_HOURS, 1, Arrays.asList("31/12/18 12:30", "31/12/18 20:30", "01/01/19 04:30") },
 								 { "28/02/20 12:30", Frequency.EIGHT_HOURS, 2, Arrays.asList("28/02/20 12:30", "28/02/20 20:30", "29/02/20 04:30", "29/02/20 12:30", "29/02/20 20:30", "01/03/20 04:30") },
