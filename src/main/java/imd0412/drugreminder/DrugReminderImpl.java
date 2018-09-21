@@ -2,6 +2,7 @@ package imd0412.drugreminder;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class DrugReminderImpl implements IReminder {
 	
@@ -13,18 +14,18 @@ public class DrugReminderImpl implements IReminder {
 		if(duration < 1 || duration >30) {
 			throw new java.lang.IllegalArgumentException("duration invalido");
 		}
-		
-		if(Character.toString(startTime.charAt(2)) != "/" || Character.toString(startTime.charAt(5)) != "/" || Character.toString(startTime.charAt(8)) != " " || Character.toString(startTime.charAt(11)) != ":") {
+				
+		if(!Objects.equals(startTime.substring(2,3), "/") || !Objects.equals(startTime.substring(5,6), "/") || !Objects.equals(startTime.substring(8,9), " ") || !Objects.equals(startTime.substring(11,12), ":")) {
 			throw new java.lang.IllegalArgumentException("formato da data invalido");
 		} else if(startTime.length() != 14) {
 			throw new java.lang.IllegalArgumentException("formato da data invalido");
 		}
 		
-		dia = Integer.parseInt(startTime.substring(0,1));
-		mes = Integer.parseInt(startTime.substring(3,4));
-		ano = Integer.parseInt(startTime.substring(6,7));
-		hora = Integer.parseInt(startTime.substring(9,10));
-		min = Integer.parseInt(startTime.substring(12,13));
+		dia = Integer.parseInt(startTime.substring(0,2));
+		mes = Integer.parseInt(startTime.substring(3,5));
+		ano = Integer.parseInt(startTime.substring(6,8));
+		hora = Integer.parseInt(startTime.substring(9,11));
+		min = Integer.parseInt(startTime.substring(12,14));
 		
 		if(ano < 18) {
 			throw new java.lang.IllegalArgumentException("data invalida");
@@ -107,7 +108,7 @@ public class DrugReminderImpl implements IReminder {
 			}
 		} else if(dia == 30 && mes == 2) {
 			addMes();
-		} else if(dia == 29 && mes == 2) {
+		} else if(dia == 29 && mes == 2 && ano%4 != 0) {
 			addMes();
 		}
 	}
